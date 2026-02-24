@@ -1,0 +1,6 @@
+@BFFTestMock_HostAddress = http://localhost:5165
+
+GET {{BFFTestMock_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
