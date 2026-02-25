@@ -1,0 +1,119 @@
+.parksNavigation {
+  width: 350px;
+}
+
+.selector {
+  position: relative;
+  padding: 15.5px 12px 15.5px 24px;
+  height: 100%;
+}
+
+.selectorButton {
+  width: 100%;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  text-align: left;
+
+  &:hover .parkAddress {
+    color: #1a1a1a;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #007AFF;
+    outline-offset: 2px;
+  }
+}
+
+.parkInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.parkName {
+  font-size: 14px;
+  white-space: nowrap;
+  word-spacing: 3px;
+  color: var(--text-quinary);
+}
+
+.adressWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.parkAddress {
+  font-size: 16px;
+  color: #666;
+  padding-right: 1.5px;
+}
+
+.parkNum {
+  height: 18px;
+  padding-right: 6px;
+  padding-left: 6px;
+
+  background-color: var(--fg-senary-alt);
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+  color: var(--fg-senary);
+}
+
+.selectorButton:hover .chevron {
+  color: #1a1a1a;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.parkOption {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+
+    .parkAddress {
+      color: #1a1a1a;
+    }
+  }
+
+  &.selected {
+    background-color: rgba(0, 122, 255, 0.05);
+
+    & .parkName {
+      color: #007AFF;
+      font-weight: 600;
+    }
+  }
+}

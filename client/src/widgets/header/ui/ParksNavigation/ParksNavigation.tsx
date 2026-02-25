@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 
-import styles from '../../Header.module.css'
+import styles from './ParksNavigation.module.css'
 import type { Park } from '../../config/parks.types'
 import { useParkSelection } from '../../hooks/useParkSelection'
 

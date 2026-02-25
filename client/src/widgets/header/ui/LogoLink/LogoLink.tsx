@@ -1,5 +1,5 @@
 import Logo from '@/shared/assets/logo.svg?react'
-import styles from '../../Header.module.css'
+import styles from './LogoLing.module.css'
 
 export const LogoLink: React.FC = () => (
   <a className={styles.logoContainer} href="/">
