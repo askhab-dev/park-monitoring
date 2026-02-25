@@ -1,0 +1,32 @@
+.leftMenu {
+  display: flex;
+  flex-direction: column;
+  width: 80px;
+  height: calc(100vh - 80px);
+  padding: 6px 6px 0;
+  gap: 2px;
+
+  background: #FCFCFD;
+  border-right: 1px solid var(--border-secondary);
+
+  &> :first-child {
+    background: #F2F4F7;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 6px;
+
+  &:hover {
+    background: #F2F4F7;
+  }
+}
+
+.spacer {
+  margin-top: auto;
+}
