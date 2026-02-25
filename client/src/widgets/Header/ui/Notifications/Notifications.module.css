@@ -1,0 +1,27 @@
+.notifications {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+
+  border: 1px solid var(--border-secondary);
+  border-left: 0;
+  border-top: 0;
+}
+
+.iconWrapper {
+  position: relative;
+}
+
+.iconWrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -1px;
+  width: 6px;
+  height: 6px;
+  display: block;
+
+  background: var(--fg-error-primary);
+  border-radius: 50%;
+}
