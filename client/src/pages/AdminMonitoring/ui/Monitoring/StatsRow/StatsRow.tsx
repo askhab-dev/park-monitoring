@@ -63,9 +63,7 @@ export const StatsRow = () => {
 
             {item.percent && (
               <span
-                className={
-                  item.status ? `${styles.percent} ${styles[item.status]}` : styles.percent
-                }
+                className={styles.percent}
               >
                 {item.percent}
               </span>
