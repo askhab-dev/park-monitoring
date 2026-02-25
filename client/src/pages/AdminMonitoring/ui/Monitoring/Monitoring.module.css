@@ -1,4 +1,7 @@
 .monitoring {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   overflow-y: auto;
   flex-grow: 1;
   padding: 12px;
