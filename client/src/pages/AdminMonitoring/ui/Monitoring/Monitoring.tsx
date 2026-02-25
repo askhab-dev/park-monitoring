@@ -17,19 +17,20 @@ const VMParams: { id: VMParam; label: string }[] = [
 
 
 export const Monitoring = () => {
-    const [active, setActive] = useState<VMParam>('state');
-  
+  const [active, setActive] = useState<VMParam>('state');
+
   return (
     <div className={styles.monitoring}>
       <PeriodSwitcher />
       <StatsRow />
-      <Map />
-      <MultiSwitcher
-        className={styles.vmSwitcher}
-        items={VMParams}
-        value={active}
-        onChange={setActive}
-      />
+      <Map>
+        <MultiSwitcher
+          className={styles.vmSwitcher}
+          items={VMParams}
+          value={active}
+          onChange={setActive}
+        />
+      </Map>
     </div>
   );
 };
