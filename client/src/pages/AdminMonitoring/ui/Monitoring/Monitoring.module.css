@@ -6,10 +6,3 @@
   flex-grow: 1;
   padding: 12px;
 }
-
-.vmSwitcher {
-  justify-content: center;
-  padding: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
