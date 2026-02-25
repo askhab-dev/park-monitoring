@@ -14,6 +14,8 @@
   -moz-osx-font-smoothing: grayscale;
 
   --bg-brand: #C3002F;
+  --bg-brand-light: #FDEDED;
+  --bg-brand-hover: #F9A8D4;
 
   --text-quinary: #98A2B3;
   --fg-quinary: #98A2B3;
