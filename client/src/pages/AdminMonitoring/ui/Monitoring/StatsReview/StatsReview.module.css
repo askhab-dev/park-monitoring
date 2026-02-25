@@ -6,3 +6,8 @@
   line-height: 32px;
   color: #98A2B3;
 }
+
+.statsContainers {
+  display: flex;
+  gap: 12px;
+}

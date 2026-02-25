@@ -1,3 +1,4 @@
+import { ProductFilling } from './ProductFilling/ProductFilling';
 import { SalesIndex } from './SalesIndex/SalesIndex';
 import styles from './StatsReview.module.css';
 
@@ -7,8 +8,9 @@ export const StatsReview = () => {
       <h1 className={styles.statsReviewTitle}>
         Обзор состояния ТА
       </h1>
-      <div>
+      <div className={styles.statsContainers}>
         <SalesIndex />
+        <ProductFilling />
       </div>
     </>
   );
