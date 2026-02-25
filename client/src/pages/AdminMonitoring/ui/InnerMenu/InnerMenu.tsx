@@ -20,9 +20,11 @@ export const InnerMenu: React.FC = () => {
       <h2 className={styles.label}>{MENU_ITEMS.label}</h2>
       <ul className={styles.options}>
         {MENU_ITEMS.options.map(({ label, Icon }) => (
-          <li key={label} className={styles.option}>
-            <Icon className={styles.icon} />
-            <span>{label}</span>
+          <li key={label} >
+            <button className={styles.option}>
+              <Icon className={styles.icon} />
+              <span>{label}</span>
+            </button>
           </li>
         ))}
       </ul>
