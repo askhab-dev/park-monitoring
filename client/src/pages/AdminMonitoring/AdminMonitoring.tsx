@@ -1,11 +1,17 @@
 import { Header } from "@/widgets/Header"
 import { LeftMenu } from '@/widgets/LeftMenu/LeftMenu'
+import { InnerMenu } from './ui/InnerMenu/InnerMenu'
+
+import styles from './AdminMonitoring.module.css';
 
 export const AdminMonitoring: React.FC = () => {
   return (
     <>
       <Header />
-      <LeftMenu />
+      <main className={styles.main}>
+        <LeftMenu />
+        <InnerMenu />
+      </main>
     </>
   )
-}
+};
