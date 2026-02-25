@@ -9,13 +9,13 @@ import { Profile } from './ui/Profile/Profile';
 
 export const Header: React.FC = () => {
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <LogoLink />
       <ParksNavigation parks={parks} />
       <Search />
       <LastUpdate />
       <Notifications />
       <Profile />
-    </div>
+    </header>
   )
 };
