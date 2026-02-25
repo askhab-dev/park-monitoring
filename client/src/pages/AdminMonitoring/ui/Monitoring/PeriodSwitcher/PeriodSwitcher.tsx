@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './PeriodSwitcher.module.css';
+import { MultiSwitcher } from '@/shared/ui/MultiSwitcher/MultiSwitcher';
 
 type Period = 'today' | 'yesterday' | 'week' | 'month' | 'quarter' | 'custom';
 
@@ -16,16 +16,10 @@ export const PeriodSwitcher = () => {
   const [active, setActive] = useState<Period>('month');
 
   return (
-    <div className={styles.container}>
-      {periods.map((period) => (
-        <button
-          key={period.id}
-          className={`${styles.item} ${active === period.id ? styles.active : ''}`}
-          onClick={() => setActive(period.id)}
-        >
-          {period.label}
-        </button>
-      ))}
-    </div>
+    <MultiSwitcher
+      items={periods}
+      value={active}
+      onChange={setActive}
+    />
   );
 };
