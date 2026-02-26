@@ -5,13 +5,27 @@
   border-radius: 12px;
 }
 
-.title {
+.header {
+  display: flex;
   padding: 4px 16px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
+  justify-content: space-between;
+}
+
+.title {
   font-weight: 600;
   font-size: 18px;
   line-height: 28px;
   color: #101828;
+}
+
+.switcher {
+  width: unset;
+  height: unset;
+
+  button {
+    margin: 0;
+  }
 }
 
 .columns {

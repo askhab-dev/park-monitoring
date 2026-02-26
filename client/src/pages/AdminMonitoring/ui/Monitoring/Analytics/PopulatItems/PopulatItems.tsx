@@ -4,6 +4,7 @@ import { ReportButton } from '@/shared/ui/ReportButton/ReportButton';
 import Coin1Icon from '../../../../assets/coin1.svg?react'
 import Coin2Icon from '../../../../assets/coin2.svg?react'
 import Coin3Icon from '../../../../assets/coin3.svg?react'
+import { MultiSwitcher } from '@/shared/ui/MultiSwitcher/MultiSwitcher';
 
 const fetcher = (url: string) => fetch(url).then(res => res.json());
 
@@ -12,10 +13,10 @@ type SalesBuProductResponse = {
   soldInTopFive: number;
   differentProductCategoriesCount: number;
   topProducts: {
-      productId: number,
-      category: number,
-      soldTotal: number,
-      percentageOfAllSales: number
+    productId: number,
+    category: number,
+    soldTotal: number,
+    percentageOfAllSales: number
   }[];
 }
 
@@ -49,8 +50,17 @@ export const PopulatItems = () => {
   );
 
   return <div className={styles.container}>
-    <h2 className={styles.title}>Популярные</h2>
-
+    <div className={styles.header}>
+      <h2 className={styles.title}>Популярные</h2>
+      <MultiSwitcher
+        items={[
+          { label: 'Товары', id: 'products' },
+          { label: 'Категории', id: 'categories' },
+        ]}
+        defaultValue={'products'}
+        className={styles.switcher}
+      />
+    </div>
     <div className={styles.columns}>
       {topProducts.map((it, idx) => {
         const fillClass = styles.barFillLow;
