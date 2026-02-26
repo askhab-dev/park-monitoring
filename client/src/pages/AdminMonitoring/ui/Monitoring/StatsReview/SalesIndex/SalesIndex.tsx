@@ -1,7 +1,7 @@
 import useSWR from 'swr'
 import styles from './SalesIndex.module.css'
 import ArrowDownIcon from '../../../../assets/arrow-down-wide.svg?react'
-import ArrowRightIcon from '../../../../assets/arrow-narrow-right.svg?react'
+import { ReportButton } from '@/shared/ui/ReportButton/ReportButton'
 
 interface MachineData {
   machineId: number
@@ -69,10 +69,7 @@ export const SalesIndex = () => {
         ))}
       </ul>
 
-      <a className={styles.footer} href="#">
-        <span className={styles.reportLink} >Перейти в отчет</span>
-        <ArrowRightIcon />
-      </a>
+      <ReportButton/>
     </div>
   )
 };

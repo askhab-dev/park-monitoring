@@ -1,7 +1,7 @@
 import useSWR from 'swr'
-import ArrowRightIcon from '../../../../assets/arrow-narrow-right.svg?react'
 
 import styles from './ProductFilling.module.css';
+import { ReportButton } from '@/shared/ui/ReportButton/ReportButton';
 
 const fetcher = (url: string) => fetch(url).then(res => res.json())
 
@@ -25,10 +25,7 @@ export const ProductFilling = () => {
     <div className={styles.container}>
       <h2 className={styles.title}>Заполнение товарами</h2>
       <div className={styles.message}>Ошибка загрузки данных</div>
-      <a className={styles.footer} href="#">
-        <span className={styles.reportLink} >Перейти в отчет</span>
-        <ArrowRightIcon />
-      </a>
+      <ReportButton />
     </div>
   )
 
@@ -36,10 +33,7 @@ export const ProductFilling = () => {
     <div className={styles.container}>
       <h2 className={styles.title}>Заполнение товарами</h2>
       <div className={styles.message}>Загрузка...</div>
-      <a className={styles.footer} href="#">
-        <span className={styles.reportLink} >Перейти в отчет</span>
-        <ArrowRightIcon />
-      </a>
+      <ReportButton />
     </div>
   )
 
@@ -83,10 +77,7 @@ export const ProductFilling = () => {
         <div className={styles.cardSubtitle}>ТА требуют пополнения товаром</div>
       </div>
       <div className={styles.space}/>
-      <a className={styles.footer} href="#">
-        <span className={styles.reportLink} >Перейти в отчет</span>
-        <ArrowRightIcon />
-      </a>
+      <ReportButton className={styles.footer} />
     </div>
-  )
+  );
 };
