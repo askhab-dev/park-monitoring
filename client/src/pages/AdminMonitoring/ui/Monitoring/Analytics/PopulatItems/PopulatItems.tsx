@@ -8,7 +8,7 @@ import { MultiSwitcher } from '@/shared/ui/MultiSwitcher/MultiSwitcher';
 
 const fetcher = (url: string) => fetch(url).then(res => res.json());
 
-type SalesBuProductResponse = {
+type SalesByProductResponse = {
   totalSold: number;
   soldInTopFive: number;
   differentProductCategoriesCount: number;
@@ -21,7 +21,7 @@ type SalesBuProductResponse = {
 }
 
 export const PopulatItems = () => {
-  const { data, error, isLoading } = useSWR<SalesBuProductResponse>(
+  const { data, error, isLoading } = useSWR<SalesByProductResponse>(
     'http://localhost:8080/sales/by-product-type',
     fetcher
   );

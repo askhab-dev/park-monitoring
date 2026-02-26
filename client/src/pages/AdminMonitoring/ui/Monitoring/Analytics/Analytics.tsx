@@ -1,4 +1,5 @@
 import styles from './Analytics.module.css';
+import { PeakSales } from './PeakSales/PeakSales';
 import { PopulatItems } from './PopulatItems/PopulatItems';
 import { SalesVolumes } from './SalesVolumes/SalesVolumes';
 
@@ -9,5 +10,6 @@ export const Analytics = () => {
       <SalesVolumes />
       <PopulatItems />
     </div>
+    <PeakSales />
   </>;
 };
