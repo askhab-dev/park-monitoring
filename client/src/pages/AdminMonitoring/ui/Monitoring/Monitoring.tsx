@@ -5,6 +5,7 @@ import { VMParamsSwitcher } from './VMParamsSwitcher/VMParamsSwitcher';
 
 import styles from './Monitoring.module.css';
 import { StatsReview } from './StatsReview/StatsReview';
+import { Analytics } from './Analytics/Analytics';
 
 
 export const Monitoring = () => {
@@ -16,6 +17,7 @@ export const Monitoring = () => {
         <VMParamsSwitcher />
       </Map>
       <StatsReview />
+      <Analytics />
     </div>
   );
 };
