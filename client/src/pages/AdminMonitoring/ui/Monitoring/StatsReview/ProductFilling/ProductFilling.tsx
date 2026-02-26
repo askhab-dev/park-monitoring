@@ -3,7 +3,7 @@ import useSWR from 'swr'
 import styles from './ProductFilling.module.css';
 import { ReportButton } from '@/shared/ui/ReportButton/ReportButton';
 
-const fetcher = (url: string) => fetch(url).then(res => res.json())
+const fetcher = (url: string) => fetch(url).then(res => res.json());
 
 type FillItem = {
   itemCount: number
@@ -19,7 +19,7 @@ export const ProductFilling = () => {
   const { data, error, isLoading } = useSWR<ProductFillResponse>(
     'http://localhost:8080/machines/product-fill',
     fetcher
-  )
+  );
 
   if (error) return (
     <div className={styles.container}>
