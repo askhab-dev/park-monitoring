@@ -40,3 +40,17 @@
   color: #101828;
   font-weight: 500;
 }
+
+@media (max-width: 1439px) {
+  .label {
+    display: none;
+  }
+
+  .optionLabel {
+    display: none;
+  }
+
+  .innerMenu {
+    min-width: unset;
+  }
+}

@@ -23,7 +23,7 @@ export const InnerMenu: React.FC = () => {
           <li key={label} >
             <button className={styles.option}>
               <Icon className={styles.icon} />
-              <span>{label}</span>
+              <span className={styles.optionLabel}>{label}</span>
             </button>
           </li>
         ))}
