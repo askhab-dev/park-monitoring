@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./server/BFFTestMock
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: bfftestmock
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - park-monitoring-network
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    container_name: park-monitoring-client
+    depends_on:
+      - backend
+    environment:
+      - VITE_API_URL=http://localhost:8080
+    networks:
+      - park-monitoring-network
+
+networks:
+  park-monitoring-network:
+    driver: bridge
