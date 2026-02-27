@@ -1,6 +1,3 @@
-import useSWR from 'swr'
-import { MultiSwitcher } from '@/shared/ui/MultiSwitcher/MultiSwitcher';
-import styles from './PeakSales.module.css';
 import {
   AreaChart,
   Area,
@@ -9,9 +6,14 @@ import {
   CartesianGrid,
   ResponsiveContainer,
   Tooltip,
-} from 'recharts'
+} from 'recharts';
 
-const fetcher = (url: string) => fetch(url).then(res => res.json());
+import { MultiSwitcher } from '@/shared/ui/MultiSwitcher/MultiSwitcher';
+import { useApi } from '@/shared/hooks/useApi';
+import { Loader } from '@/shared/ui/Loader/Loader';
+import { ErrorMessage } from '@/shared/ui/Error/Error';
+
+import styles from './PeakSales.module.css';
 
 type PeakSalesResponse = {
   day: number,
@@ -19,24 +21,23 @@ type PeakSalesResponse = {
 }[]
 
 export const PeakSales = () => {
-  const { data, error, isLoading } = useSWR<PeakSalesResponse>(
-    'http://localhost:8080/sales/peak-sale-count-per-day',
-    fetcher
-  );
+  const { data, error, isLoading } = useApi<PeakSalesResponse>('/sales/peak-sale-count-per-day');
 
-  if (error) return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Время пиковых продаж</h2>
-      <div className={styles.message}>Ошибка загрузки данных</div>
-    </div>
-  )
+  if (error)
+    return (
+      <div className={styles.container}>
+        <h2 className={styles.title}>Время пиковых продаж</h2>
+        <ErrorMessage className={styles.message} />
+      </div>
+    );
 
-  if (isLoading || !data) return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Время пиковых продаж</h2>
-      <div className={styles.message}>Загрузка...</div>
-    </div>
-  )
+  if (isLoading || !data)
+    return (
+      <div className={styles.container}>
+        <h2 className={styles.title}>Время пиковых продаж</h2>
+        <Loader className={styles.message} />
+      </div>
+    );
 
   const chartData = data.map(item => {
     const [h, m] = item.peakSalesTime.split(':').map(Number)

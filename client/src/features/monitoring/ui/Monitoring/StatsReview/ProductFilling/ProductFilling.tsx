@@ -1,9 +1,8 @@
-import useSWR from 'swr'
-
+import { useApi } from '@/shared/hooks/useApi';
 import styles from './ProductFilling.module.css';
 import { ReportButton } from '@/shared/ui/ReportButton/ReportButton';
-
-const fetcher = (url: string) => fetch(url).then(res => res.json());
+import { Loader } from '@/shared/ui/Loader/Loader';
+import { ErrorMessage } from '@/shared/ui/Error/Error';
 
 type FillItem = {
   itemCount: number
@@ -16,26 +15,25 @@ type ProductFillResponse = {
 }
 
 export const ProductFilling = () => {
-  const { data, error, isLoading } = useSWR<ProductFillResponse>(
-    'http://localhost:8080/machines/product-fill',
-    fetcher
-  );
+  const { data, error, isLoading } = useApi<ProductFillResponse>('/machines/product-fill');
 
-  if (error) return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Заполнение товарами</h2>
-      <div className={styles.message}>Ошибка загрузки данных</div>
-      <ReportButton />
-    </div>
-  )
+  if (error)
+    return (
+      <div className={styles.container}>
+        <h2 className={styles.title}>Заполнение товарами</h2>
+        <ErrorMessage className={styles.message} />
+        <ReportButton />
+      </div>
+    );
 
-  if (isLoading || !data) return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Заполнение товарами</h2>
-      <div className={styles.message}>Загрузка...</div>
-      <ReportButton />
-    </div>
-  )
+  if (isLoading || !data)
+    return (
+      <div className={styles.container}>
+        <h2 className={styles.title}>Заполнение товарами</h2>
+        <Loader className={styles.message} />
+        <ReportButton />
+      </div>
+    );
 
   const { topFilled, total } = data
 

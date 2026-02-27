@@ -1,16 +1,8 @@
-import ArrowIcon from '../../../assets/arrowRight.svg?react';
 import styles from './StatsRow.module.css';
-import useSWR from 'swr';
+import { useApi } from '@/shared/hooks/useApi';
+import { StatItem } from '@/shared/ui/StatItem/StatItem';
 
-type StatStatus = 'good' | 'warning' | 'danger' | null;
-
-type Stat = {
-  label: string;
-  value: number;
-  percent?: string;
-  status?: StatStatus;
-  showArrow?: boolean;
-};
+type Stat = React.ComponentProps<typeof StatItem>;
 
 type OverviewData = {
   total: number;
@@ -19,10 +11,8 @@ type OverviewData = {
   needsRepair: number;
 };
 
-const fetcher = (url: string) => fetch(`http://localhost:8080${url}`).then(res => res.json());
-
 export const StatsRow = () => {
-  const { data, error, isLoading } = useSWR<OverviewData>('/machines/overview', fetcher);
+  const { data, error, isLoading } = useApi<OverviewData>('/machines/overview');
 
   if (isLoading) {
     return <div className={styles.statsRow}>Загрузка...</div>;
@@ -70,32 +60,7 @@ export const StatsRow = () => {
   return (
     <div className={styles.statsRow}>
       {statsData.map((item, index) => (
-        <div key={index} className={styles.statItem}>
-          <div className={styles.label}>
-            <span>{item.label}</span>
-            {item.showArrow && <ArrowIcon className={styles.arrow} />}
-          </div>
-
-          <div className={styles.valueWrapper}>
-            <span
-              className={
-                item.status
-                  ? `${styles.value} ${styles[item.status]}`
-                  : styles.value
-              }
-            >
-              {item.value}
-            </span>
-
-            {item.percent && (
-              <span
-                className={styles.percent}
-              >
-                {item.percent}
-              </span>
-            )}
-          </div>
-        </div>
+        <StatItem key={index} {...item} />
       ))}
     </div>
   );

@@ -1,7 +1,9 @@
-import useSWR from 'swr'
+import { useApi } from '@/shared/hooks/useApi';
 import styles from './SalesIndex.module.css'
-import ArrowDownIcon from '../../../../assets/arrow-down-wide.svg?react'
+import ArrowDownIcon from '@/shared/assets/arrow-down-wide.svg?react'
 import { ReportButton } from '@/shared/ui/ReportButton/ReportButton'
+import { Loader } from '@/shared/ui/Loader/Loader';
+import { ErrorMessage } from '@/shared/ui/Error/Error';
 
 interface MachineData {
   machineId: number
@@ -9,16 +11,13 @@ interface MachineData {
   percentage: number
 }
 
-const fetcher = (url: string) => fetch(url).then(res => res.json())
-
 export const SalesIndex = () => {
-  const { data, error, isLoading } = useSWR<MachineData[]>(
-    'http://localhost:8080/sales/index-by-historic-avg',
-    fetcher
-  )
+  const { data, error, isLoading } = useApi<MachineData[]>('/sales/index-by-historic-avg');
 
-  if (error) return <div className={styles.error}>Ошибка загрузки данных</div>
-  if (isLoading) return <div className={styles.loading}>Загрузка...</div>
+  if (error)
+    return <div className={styles.error}><ErrorMessage /></div>;
+  if (isLoading)
+    return <div className={styles.loading}><Loader /></div>;
   const items = (data ?? []).slice().sort((a, b) => a.percentage - b.percentage)
 
   const typeColor = (type: string) => {

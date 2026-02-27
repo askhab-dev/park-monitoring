@@ -1,12 +1,13 @@
-import useSWR from 'swr'
-import styles from './PopulatItems.module.css';
+import { useApi } from '@/shared/hooks/useApi';
 import { ReportButton } from '@/shared/ui/ReportButton/ReportButton';
-import Coin1Icon from '../../../../assets/coin1.svg?react'
-import Coin2Icon from '../../../../assets/coin2.svg?react'
-import Coin3Icon from '../../../../assets/coin3.svg?react'
+import Coin1Icon from '@/shared/assets/coin1.svg?react'
+import Coin2Icon from '@/shared/assets/coin2.svg?react'
+import Coin3Icon from '@/shared/assets/coin3.svg?react'
 import { MultiSwitcher } from '@/shared/ui/MultiSwitcher/MultiSwitcher';
+import { Loader } from '@/shared/ui/Loader/Loader';
+import { ErrorMessage } from '@/shared/ui/Error/Error';
 
-const fetcher = (url: string) => fetch(url).then(res => res.json());
+import styles from './PopulatItems.module.css';
 
 type SalesByProductResponse = {
   totalSold: number;
@@ -21,26 +22,25 @@ type SalesByProductResponse = {
 }
 
 export const PopulatItems = () => {
-  const { data, error, isLoading } = useSWR<SalesByProductResponse>(
-    'http://localhost:8080/sales/by-product-type',
-    fetcher
-  );
+  const { data, error, isLoading } = useApi<SalesByProductResponse>('/sales/by-product-type');
 
-  if (error) return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Популярные</h2>
-      <div className={styles.message}>Ошибка загрузки данных</div>
-      <ReportButton />
-    </div>
-  )
+  if (error)
+    return (
+      <div className={styles.container}>
+        <h2 className={styles.title}>Популярные</h2>
+        <ErrorMessage className={styles.message} />
+        <ReportButton />
+      </div>
+    );
 
-  if (isLoading || !data) return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Популярные</h2>
-      <div className={styles.message}>Загрузка...</div>
-      <ReportButton />
-    </div>
-  )
+  if (isLoading || !data)
+    return (
+      <div className={styles.container}>
+        <h2 className={styles.title}>Популярные</h2>
+        <Loader className={styles.message} />
+        <ReportButton />
+      </div>
+    );
 
   const { totalSold, soldInTopFive, differentProductCategoriesCount, topProducts } = data;
 

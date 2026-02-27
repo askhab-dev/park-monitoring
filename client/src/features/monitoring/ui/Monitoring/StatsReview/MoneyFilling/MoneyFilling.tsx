@@ -1,11 +1,12 @@
-import useSWR from 'swr'
-import ArrowDownIcon from '../../../../assets/arrow-down-narrow.svg?react'
-import CoinIcon from '../../../../assets/coin.svg?react'
-import CashIcon from '../../../../assets/cash.svg?react'
+import { useApi } from '@/shared/hooks/useApi';
+import ArrowDownIcon from '@/shared/assets/arrow-down-narrow.svg?react';
+import CoinIcon from '@/shared/assets/coin.svg?react';
+import CashIcon from '@/shared/assets/cash.svg?react';
 import styles from './MoneyFilling.module.css';
 import { ReportButton } from '@/shared/ui/ReportButton/ReportButton';
+import { Loader } from '@/shared/ui/Loader/Loader';
+import { ErrorMessage } from '@/shared/ui/Error/Error';
 
-const fetcher = (url: string) => fetch(url).then(res => res.json())
 const typeColor = (type: string) => {
   switch (type) {
     case 'B':
@@ -27,26 +28,25 @@ type MoneyFillResponse = {
 }[];
 
 export const MoneyFilling = () => {
-  const { data, error, isLoading } = useSWR<MoneyFillResponse>(
-    'http://localhost:8080/machines/money-fill',
-    fetcher
-  );
+  const { data, error, isLoading } = useApi<MoneyFillResponse>('/machines/money-fill');
 
-  if (error) return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Состояние денежных средств</h2>
-      <div className={styles.message}>Ошибка загрузки данных</div>
-      <ReportButton />
-    </div>
-  )
+  if (error)
+    return (
+      <div className={styles.container}>
+        <h2 className={styles.title}>Состояние денежных средств</h2>
+        <ErrorMessage className={styles.message} />
+        <ReportButton />
+      </div>
+    );
 
-  if (isLoading || !data) return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Состояние денежных средств</h2>
-      <div className={styles.message}>Загрузка...</div>
-      <ReportButton />
-    </div>
-  )
+  if (isLoading || !data)
+    return (
+      <div className={styles.container}>
+        <h2 className={styles.title}>Состояние денежных средств</h2>
+        <Loader className={styles.message} />
+        <ReportButton />
+      </div>
+    );
 
   return (
     <div className={styles.container}>

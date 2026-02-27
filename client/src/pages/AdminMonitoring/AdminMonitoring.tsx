@@ -3,7 +3,7 @@ import { LeftMenu } from '@/widgets/LeftMenu/LeftMenu'
 import { InnerMenu } from './ui/InnerMenu/InnerMenu'
 
 import styles from './AdminMonitoring.module.css';
-import { Monitoring } from './ui/Monitoring/Monitoring';
+import { Monitoring } from '@/features/monitoring';
 
 export const AdminMonitoring: React.FC = () => {
   return (
