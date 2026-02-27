@@ -37,7 +37,6 @@ export const MoneyFilling = () => {
       <div className={styles.container}>
         <h2 className={styles.title}>Состояние денежных средств</h2>
         <ErrorMessage className={styles.message} />
-        <ReportButton />
       </div>
     );
 
@@ -46,7 +45,6 @@ export const MoneyFilling = () => {
       <div className={styles.container}>
         <h2 className={styles.title}>Состояние денежных средств</h2>
         <Loader className={styles.message} />
-        <ReportButton />
       </div>
     );
 

@@ -1,6 +1,8 @@
 import styles from './StatsRow.module.css';
 import { useApi } from '@/shared/hooks/useApi';
 import { StatItem } from '@/shared/ui/StatItem/StatItem';
+import { Loader } from '@/shared/ui/Loader/Loader';
+import { ErrorMessage } from '@/shared/ui/Error/Error';
 
 type Stat = React.ComponentProps<typeof StatItem>;
 
@@ -15,11 +17,19 @@ export const StatsRow = () => {
   const { data, error, isLoading } = useApi<OverviewData>('/machines/overview');
 
   if (isLoading) {
-    return <div className={styles.statsRow}>Загрузка...</div>;
+    return (
+      <div className={styles.statsRow}>
+        <Loader />
+      </div>
+    );
   }
 
   if (error) {
-    return <div className={styles.statsRow}>Ошибка: {error.message}</div>;
+    return (
+      <div className={styles.statsRow}>
+        <ErrorMessage />
+      </div>
+    );
   }
 
   if (!data) {
@@ -27,6 +37,8 @@ export const StatsRow = () => {
   }
 
   const total = data.total || 0;
+  const getPercent = (value: number) =>
+    total > 0 ? `${Math.round((value / total) * 100)}%` : '0%';
 
   const statsData: Stat[] = [
     {
@@ -37,21 +49,21 @@ export const StatsRow = () => {
     {
       label: 'Работающих',
       value: data.working,
-      percent: `${Math.round((data.working / total) * 100)}%`,
+      percent: getPercent(data.working),
       status: 'good',
       showArrow: true,
     },
     {
       label: 'Мало товаров',
       value: data.lowSupply,
-      percent: `${Math.round((data.lowSupply / total) * 100)}%`,
+      percent: getPercent(data.lowSupply),
       status: 'warning',
       showArrow: true,
     },
     {
       label: 'Требуют обслуживания',
       value: data.needsRepair,
-      percent: `${Math.round((data.needsRepair / total) * 100)}%`,
+      percent: getPercent(data.needsRepair),
       status: 'danger',
       showArrow: false,
     },
@@ -59,8 +71,8 @@ export const StatsRow = () => {
 
   return (
     <div className={styles.statsRow}>
-      {statsData.map((item, index) => (
-        <StatItem key={index} {...item} />
+      {statsData.map((item) => (
+        <StatItem key={item.label} {...item} />
       ))}
     </div>
   );

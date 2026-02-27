@@ -8,7 +8,13 @@ export const Map: React.FC<{ children?: React.ReactNode }> = (props) => {
 
   return (
     <div className={styles.map}>
-      <iframe src={YA_MAP_LINK} allowFullScreen={true} />
+      <iframe
+        src={YA_MAP_LINK}
+        title='Карта парков'
+        loading='lazy'
+        referrerPolicy='no-referrer-when-downgrade'
+        allowFullScreen={true}
+      />
       {children}
     </div>
   );

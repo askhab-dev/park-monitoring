@@ -23,6 +23,7 @@ export const Profile: React.FC = () => {
         <motion.img
           src={profileImage}
           alt='User Avatar'
+          decoding='async'
           className={styles.avatar}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -54,6 +55,8 @@ export const Profile: React.FC = () => {
                 <img
                   src={profileImage}
                   alt='User'
+                  loading='lazy'
+                  decoding='async'
                   className={styles.popupAvatar}
                 />
                 <div className={styles.userDetails}>

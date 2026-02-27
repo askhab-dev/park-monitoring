@@ -30,7 +30,6 @@ export const PopulatItems = () => {
       <div className={styles.container}>
         <h2 className={styles.title}>Популярные</h2>
         <ErrorMessage className={styles.message} />
-        <ReportButton />
       </div>
     );
 
@@ -39,7 +38,6 @@ export const PopulatItems = () => {
       <div className={styles.container}>
         <h2 className={styles.title}>Популярные</h2>
         <Loader className={styles.message} />
-        <ReportButton />
       </div>
     );
 

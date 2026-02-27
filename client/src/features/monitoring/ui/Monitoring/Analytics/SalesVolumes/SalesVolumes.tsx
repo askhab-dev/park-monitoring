@@ -26,7 +26,6 @@ export const SalesVolumes = () => {
       <div className={styles.container}>
         <h2 className={styles.title}>ТА по объемам продаж</h2>
         <ErrorMessage className={styles.message} />
-        <ReportButton />
       </div>
     );
 
@@ -35,7 +34,6 @@ export const SalesVolumes = () => {
       <div className={styles.container}>
         <h2 className={styles.title}>ТА по объемам продаж</h2>
         <Loader className={styles.message} />
-        <ReportButton />
       </div>
     );
 

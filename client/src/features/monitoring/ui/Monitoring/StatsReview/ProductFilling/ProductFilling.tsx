@@ -23,8 +23,7 @@ export const ProductFilling = () => {
     return (
       <div className={styles.container}>
         <h2 className={styles.title}>Заполнение товарами</h2>
-        <ErrorMessage className={styles.message} />
-        <ReportButton />
+        <ErrorMessage />
       </div>
     );
 
@@ -32,8 +31,7 @@ export const ProductFilling = () => {
     return (
       <div className={styles.container}>
         <h2 className={styles.title}>Заполнение товарами</h2>
-        <Loader className={styles.message} />
-        <ReportButton />
+        <Loader />
       </div>
     );
 

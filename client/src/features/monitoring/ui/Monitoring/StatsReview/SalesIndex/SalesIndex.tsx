@@ -18,13 +18,19 @@ export const SalesIndex = () => {
 
   if (error)
     return (
-      <div className={styles.error}>
+      <div className={styles.container}>
+        <h2 className={styles.title}>
+          Индекс продаж по средней исторической активности
+        </h2>
         <ErrorMessage />
       </div>
     );
   if (isLoading)
     return (
-      <div className={styles.loading}>
+      <div className={styles.container}>
+        <h2 className={styles.title}>
+          Индекс продаж по средней исторической активности
+        </h2>
         <Loader />
       </div>
     );
