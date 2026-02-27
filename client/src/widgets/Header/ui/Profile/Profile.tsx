@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LogOut, Settings, User, ChevronRight } from 'lucide-react';
+import cx from 'clsx';
 import styles from './Profile.module.css';
 import profileImage from '../../assets/profile.jpg';
 
@@ -96,7 +97,7 @@ export const Profile: React.FC = () => {
                 </motion.button>
 
                 <motion.button
-                  className={`${styles.menuItem} ${styles.logout}`}
+                  className={cx(styles.menuItem, styles.logout)}
                   whileHover={{ x: 4, backgroundColor: 'rgba(255,0,0,0.02)' }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => {

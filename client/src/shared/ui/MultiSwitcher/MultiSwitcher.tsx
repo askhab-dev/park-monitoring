@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from 'react';
+import cx from 'clsx';
 import styles from './MultiSwitcher.module.css';
 
 export type SwitcherId = string | number;
@@ -40,7 +41,7 @@ export const MultiSwitcher = <T extends SwitcherId>({
   };
 
   return (
-    <div className={`${styles.container} ${className}`}>
+    <div className={cx(styles.container, className)}>
       {items.map((item) => {
         const isActive = activeId === item.id;
 
@@ -48,11 +49,11 @@ export const MultiSwitcher = <T extends SwitcherId>({
           <button
             key={String(item.id)}
             type='button'
-            className={`
-              ${styles.item}
-              ${isActive ? styles.active : ''}
-              ${item.disabled ? styles.disabled : ''}
-            `}
+            className={cx(
+              styles.item,
+              isActive && styles.active,
+              item.disabled && styles.disabled,
+            )}
             onClick={() => !item.disabled && handleClick(item.id)}
             disabled={item.disabled}
           >

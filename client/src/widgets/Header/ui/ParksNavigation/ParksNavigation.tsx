@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import cx from 'clsx';
 
 import styles from './ParksNavigation.module.css';
 import type { Park } from '../../config/parks.types';
@@ -57,7 +58,10 @@ export const ParksNavigation: React.FC<Props> = ({ parks }) => {
               {parks.map((park) => (
                 <motion.button
                   key={park.id}
-                  className={`${styles.parkOption} ${selectedPark.id === park.id ? styles.selected : ''}`}
+                  className={cx(
+                    styles.parkOption,
+                    selectedPark.id === park.id && styles.selected,
+                  )}
                   onClick={() => selectPark(park)}
                   whileHover={{ backgroundColor: 'rgba(0, 0, 0, 0.02)' }}
                   whileTap={{ scale: 0.98 }}

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check, AlertCircle, Info } from 'lucide-react';
+import cx from 'clsx';
 import BellIcon from '../../assets/bell.svg?react';
 import styles from './Notifications.module.css';
 
@@ -128,7 +129,10 @@ export const Notifications: React.FC = () => {
                     items.map((notification) => (
                       <motion.div
                         key={notification.id}
-                        className={`${styles.notificationItem} ${!notification.read ? styles.unread : ''}`}
+                        className={cx(
+                          styles.notificationItem,
+                          !notification.read && styles.unread,
+                        )}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 20 }}

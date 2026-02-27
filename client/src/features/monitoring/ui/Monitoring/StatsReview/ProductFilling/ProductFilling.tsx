@@ -1,3 +1,4 @@
+import cx from 'clsx';
 import styles from './ProductFilling.module.css';
 import { useApi } from '@/shared/hooks/useApi';
 import { ReportButton } from '@/shared/ui/ReportButton/ReportButton';
@@ -60,7 +61,7 @@ export const ProductFilling = () => {
                   <div className={styles.barPercent}>{it.fillPercentage}%</div>
                 )}
                 <div
-                  className={`${styles.barFill} ${fillClass}`}
+                  className={cx(styles.barFill, fillClass)}
                   style={{ height: `${100 - it.fillPercentage}px` }}
                 >
                   {isLow && (

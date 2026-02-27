@@ -1,3 +1,4 @@
+import cx from 'clsx';
 import styles from './Error.module.css';
 
 interface ErrorProps {
@@ -9,5 +10,5 @@ export const ErrorMessage: React.FC<ErrorProps> = ({
   className = '',
   message = 'Ошибка загрузки данных',
 }) => {
-  return <div className={`${styles.message} ${className}`}>{message}</div>;
+  return <div className={cx(styles.message, className)}>{message}</div>;
 };

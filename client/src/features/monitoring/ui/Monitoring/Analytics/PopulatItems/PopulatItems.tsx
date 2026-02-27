@@ -1,3 +1,4 @@
+import cx from 'clsx';
 import styles from './PopulatItems.module.css';
 import { useApi } from '@/shared/hooks/useApi';
 import { ReportButton } from '@/shared/ui/ReportButton/ReportButton';
@@ -75,7 +76,7 @@ export const PopulatItems = () => {
                   {it.percentageOfAllSales}%
                 </div>
                 <div
-                  className={`${styles.barFill} ${fillClass}`}
+                  className={cx(styles.barFill, fillClass)}
                   style={{ height: `${50 - it.percentageOfAllSales}%` }}
                 >
                   {idx === 0 && <Coin1Icon />}
@@ -91,7 +92,7 @@ export const PopulatItems = () => {
           <div className={styles.barBackground}>
             <div className={styles.barPercent}>{totalPercentage}%</div>
             <div
-              className={`${styles.barFill} ${styles.barFillGrey}`}
+              className={cx(styles.barFill, styles.barFillGrey)}
               style={{ height: `${totalPercentage}%` }}
             ></div>
           </div>

@@ -1,3 +1,4 @@
+import cx from 'clsx';
 import styles from './SalesVolumes.module.css';
 import { useApi } from '@/shared/hooks/useApi';
 import { ReportButton } from '@/shared/ui/ReportButton/ReportButton';
@@ -59,7 +60,7 @@ export const SalesVolumes = () => {
                   {it.percentageOfAllSales}%
                 </div>
                 <div
-                  className={`${styles.barFill} ${fillClass}`}
+                  className={cx(styles.barFill, fillClass)}
                   style={{ height: `${it.percentageOfAllSales}%` }}
                 >
                   {idx === 0 && <Coin1Icon />}
@@ -74,7 +75,7 @@ export const SalesVolumes = () => {
           <div className={styles.barBackground}>
             <div className={styles.barPercent}>{totalPercentage}%</div>
             <div
-              className={`${styles.barFill} ${styles.barFillGrey}`}
+              className={cx(styles.barFill, styles.barFillGrey)}
               style={{ height: `${totalPercentage}%` }}
             ></div>
           </div>

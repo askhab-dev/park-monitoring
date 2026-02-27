@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import cx from 'clsx';
 import styles from './SalesIndex.module.css';
 import { useApi } from '@/shared/hooks/useApi';
 import ArrowDownIcon from '@/shared/assets/arrow-down-wide.svg?react';
@@ -79,9 +80,10 @@ export const SalesIndex = () => {
           }
         >
           <ArrowDownIcon
-            className={`${styles.sortIcon} ${
-              sortOrder === 'desc' ? styles.sortIconRotated : ''
-            }`}
+            className={cx(
+              styles.sortIcon,
+              sortOrder === 'desc' && styles.sortIconRotated,
+            )}
           />
         </button>
       </div>

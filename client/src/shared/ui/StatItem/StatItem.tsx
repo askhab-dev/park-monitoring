@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'clsx';
 import styles from './StatItem.module.css';
 import ArrowIcon from '@/shared/assets/arrowRight.svg?react';
 
@@ -27,11 +28,7 @@ export const StatItem: React.FC<StatItemProps> = ({
       </div>
 
       <div className={styles.valueWrapper}>
-        <span
-          className={
-            status ? `${styles.value} ${styles[status]}` : styles.value
-          }
-        >
+        <span className={cx(styles.value, status && styles[status])}>
           {value}
         </span>
 
