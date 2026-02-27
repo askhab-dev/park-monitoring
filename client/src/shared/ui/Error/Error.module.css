@@ -1,4 +1,4 @@
 .message {
-  padding: 0 16px;
-  color: #475569;
+  padding: 0 var(--space-4);
+  color: var(--gray-600);
 }

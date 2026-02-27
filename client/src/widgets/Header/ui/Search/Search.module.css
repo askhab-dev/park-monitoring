@@ -3,13 +3,13 @@
   align-items: center;
   width: 44.097%;
   flex-grow: 1;
-  gap: 6px;
-  padding: 28px 24px;
+  gap: var(--space-1_5);
+  padding: var(--space-7) var(--space-6);
   border: 1px solid var(--border-secondary);
   border-left: 0;
   border-top: 0;
 
-  background: #F9FAFB;
+  background: var(--bg-subtle);
 }
 
 .searchIcon {
@@ -24,14 +24,14 @@
   outline: none;
 
   &::placeholder {
-    font-size: 16px;
+      font-size: var(--font-size-lg);
     color: var(--fg-senary);
   }
 }
 
 .shiftClue {
   display: inline-flex;
-  padding: 5.5px 6px;
+  padding: 5.5px var(--space-1_5);
   align-items: center;
   gap: 2px;
   color: var(--fg-quaternary);
@@ -46,7 +46,7 @@
 }
 
 .shiftKey {
-  font-size: 10px;
+  font-size: var(--font-size-xs);
 }
 
 .arrowUp {

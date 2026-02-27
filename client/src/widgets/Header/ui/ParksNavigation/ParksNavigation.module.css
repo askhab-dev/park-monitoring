@@ -21,11 +21,11 @@
   text-align: left;
 
   &:hover .parkAddress {
-    color: #1a1a1a;
+    color: var(--text-dark);
   }
 
   &:focus-visible {
-    outline: 2px solid #007AFF;
+    outline: 2px solid var(--bg-brand);
     outline-offset: 2px;
   }
 }
@@ -51,7 +51,7 @@
 
 .parkAddress {
   font-size: 16px;
-  color: #666;
+  color: var(--text-placeholder);
   padding-right: 1.5px;
 }
 
@@ -73,7 +73,7 @@
 }
 
 .selectorButton:hover .chevron {
-  color: #1a1a1a;
+  color: var(--text-dark);
 }
 
 .dropdown {
@@ -108,7 +108,7 @@
     background-color: rgba(0, 0, 0, 0.02);
 
     .parkAddress {
-      color: #1a1a1a;
+      color: var(--text-dark);
     }
   }
 
@@ -116,7 +116,7 @@
     background-color: rgba(0, 122, 255, 0.05);
 
     & .parkName {
-      color: #007AFF;
+      color: var(--bg-brand);
       font-weight: 600;
     }
   }

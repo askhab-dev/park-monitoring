@@ -3,9 +3,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 16px;
-  color: #475569;
+  gap: var(--space-2_5);
+  padding: var(--space-4);
+  color: var(--gray-600);
 }
 
 .column {
@@ -19,14 +19,14 @@
 .spinner {
   width: 32px;
   height: 32px;
-  border-radius: 9999px;
+  border-radius: var(--radius-full);
   border: 3px solid rgba(71, 85, 105, 0.2);
   border-top-color: var(--bg-brand);
   animation: spin 0.85s linear infinite;
 }
 
 .label {
-  font-size: 14px;
+  font-size: var(--font-size-md);
 }
 
 @keyframes spin {

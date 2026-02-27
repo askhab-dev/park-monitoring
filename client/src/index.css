@@ -4,25 +4,84 @@
   font-weight: 400;
 
   color: #000000e0;
-  background-color: white;
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --bg-brand: #C3002F;
-  --bg-brand-light: #FDEDED;
-  --bg-brand-hover: #F9A8D4;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
 
-  --text-quinary: #98A2B3;
-  --fg-quinary: #98A2B3;
-  --fg-quaternary: #667085;
-  --fg-senary: #D0D5DD;
-  --fg-senary-alt:  #EAECF0;
-  --fg-error-primary: #F04438;
+  --space-1: 4px;
+  --space-1_5: 6px;
+  --space-2: 8px;
+  --space-2_5: 10px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
 
-  --border-secondary: #EAECF0;
+  --font-size-xs: 10px;
+  --font-size-sm: 12px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 30px;
+
+  --line-height-tight: 18px;
+  --line-height-base: 20px;
+  --line-height-lg: 24px;
+  --line-height-xl: 28px;
+  --line-height-2xl: 32px;
+  --line-height-3xl: 38px;
+
+  --bg-brand: #c3002f;
+  --bg-brand-light: #fdeded;
+  --bg-brand-hover: #f9a8d4;
+
+  --bg-surface: #fcfcfd;
+  --bg-subtle: #f9fafb;
+  --bg-soft: #f2f4f7;
+  --bg-elevated: #ffffff;
+
+  --text-primary: #101828;
+  --text-secondary: #667085;
+  --text-muted: #98a2b3;
+  --text-invert: #ffffff;
+  --text-dark: #1a1a1a;
+  --text-placeholder: #666666;
+
+  --gray-700: #344054;
+  --gray-600: #475467;
+  --gray-500: #667085;
+  --gray-400: #98a2b3;
+  --slate-500: #6b7280;
+
+  --status-success: #067647;
+  --status-warning: #93370d;
+  --status-danger: #912018;
+  --fg-error-primary: #f04438;
+  --accent-danger-soft: #ff3b30;
+
+  --bg-success-soft: #f6fef9;
+  --bg-warning-soft: #fffef5;
+  --bg-danger-soft: #fffbfa;
+
+  --border-secondary: #eaecf0;
+
+  --text-quinary: var(--text-muted);
+  --fg-quinary: var(--text-muted);
+  --fg-quaternary: var(--text-secondary);
+  --fg-senary: #d0d5dd;
+  --fg-senary-alt: #eaecf0;
 }
 
 *, *::before, *::after {

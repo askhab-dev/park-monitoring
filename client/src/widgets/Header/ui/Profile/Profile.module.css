@@ -132,11 +132,11 @@
 }
 
 .menuItem.logout {
-  color: #ff3b30;
+  color: var(--accent-danger-soft);
 }
 
 .menuItem.logout svg {
-  color: #ff3b30;
+  color: var(--accent-danger-soft);
 }
 
 @keyframes slideDown {

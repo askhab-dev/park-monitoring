@@ -3,14 +3,14 @@
   flex-direction: column;
   width: 80px;
   height: calc(100vh - 80px);
-  padding: 6px 6px 0;
+  padding: var(--space-1_5) var(--space-1_5) 0;
   gap: 2px;
 
-  background: #FCFCFD;
+  background: var(--bg-surface);
   border-right: 1px solid var(--border-secondary);
 
   &> :first-child {
-    background: #F2F4F7;
+    background: var(--bg-soft);
   }
 }
 
@@ -20,10 +20,10 @@
   justify-content: center;
   width: 68px;
   height: 68px;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
 
   &:hover {
-    background: #F2F4F7;
+    background: var(--bg-soft);
   }
 }
 
