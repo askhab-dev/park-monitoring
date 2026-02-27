@@ -1,8 +1,8 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { X, Check, AlertCircle, Info } from 'lucide-react'
-import BellIcon from '../../assets/bell.svg?react'
-import styles from './Notifications.module.css'
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, Check, AlertCircle, Info } from 'lucide-react';
+import BellIcon from '../../assets/bell.svg?react';
+import styles from './Notifications.module.css';
 
 const notifications = [
   {
@@ -11,7 +11,7 @@ const notifications = [
     title: 'Успешная операция',
     message: 'Данные успешно сохранены',
     time: '5 минут назад',
-    read: false
+    read: false,
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const notifications = [
     title: 'Внимание',
     message: 'Заканчивается место на диске',
     time: '1 час назад',
-    read: false
+    read: false,
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const notifications = [
     title: 'Новое обновление',
     message: 'Доступна новая версия системы',
     time: '3 часа назад',
-    read: true
+    read: true,
   },
   {
     id: 4,
@@ -35,38 +35,42 @@ const notifications = [
     title: 'Ошибка синхронизации',
     message: 'Не удалось синхронизировать данные',
     time: 'вчера',
-    read: true
-  }
-]
+    read: true,
+  },
+];
 
 export const Notifications: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [items, setItems] = useState(notifications)
-  
-  const unreadCount = items.filter(n => !n.read).length
+  const [isOpen, setIsOpen] = useState(false);
+  const [items, setItems] = useState(notifications);
+
+  const unreadCount = items.filter((n) => !n.read).length;
 
   const markAsRead = (id: number) => {
-    setItems(items.map(item => 
-      item.id === id ? { ...item, read: true } : item
-    ))
-  }
+    setItems(
+      items.map((item) => (item.id === id ? { ...item, read: true } : item)),
+    );
+  };
 
   const markAllAsRead = () => {
-    setItems(items.map(item => ({ ...item, read: true })))
-  }
+    setItems(items.map((item) => ({ ...item, read: true })));
+  };
 
   const deleteNotification = (id: number) => {
-    setItems(items.filter(item => item.id !== id))
-  }
+    setItems(items.filter((item) => item.id !== id));
+  };
 
   const getIconByType = (type: string) => {
-    switch(type) {
-      case 'success': return <Check size={16} color="#34C759" />
-      case 'warning': return <AlertCircle size={16} color="#FF9500" />
-      case 'error': return <AlertCircle size={16} color="#FF3B30" />
-      default: return <Info size={16} color="#007AFF" />
+    switch (type) {
+      case 'success':
+        return <Check size={16} color='#34C759' />;
+      case 'warning':
+        return <AlertCircle size={16} color='#FF9500' />;
+      case 'error':
+        return <AlertCircle size={16} color='#FF3B30' />;
+      default:
+        return <Info size={16} color='#007AFF' />;
     }
-  }
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -76,7 +80,7 @@ export const Notifications: React.FC = () => {
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         animate={{
-          backgroundColor: isOpen ? 'var(--bg-brand-light)' : 'transparent'
+          backgroundColor: isOpen ? 'var(--bg-brand-light)' : 'transparent',
         }}
       >
         <div className={styles.iconWrapper}>
@@ -119,7 +123,7 @@ export const Notifications: React.FC = () => {
 
               {/* Список уведомлений */}
               <div className={styles.notificationsList}>
-                <AnimatePresence mode="popLayout">
+                <AnimatePresence mode='popLayout'>
                   {items.length > 0 ? (
                     items.map((notification) => (
                       <motion.div
@@ -134,7 +138,7 @@ export const Notifications: React.FC = () => {
                         <div className={styles.notificationIcon}>
                           {getIconByType(notification.type)}
                         </div>
-                        
+
                         <div className={styles.notificationContent}>
                           <div className={styles.notificationHeader}>
                             <span className={styles.notificationTitle}>
@@ -156,7 +160,7 @@ export const Notifications: React.FC = () => {
                               onClick={() => markAsRead(notification.id)}
                               whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.9 }}
-                              title="Отметить как прочитанное"
+                              title='Отметить как прочитанное'
                             >
                               <Check size={14} />
                             </motion.button>
@@ -166,7 +170,7 @@ export const Notifications: React.FC = () => {
                             onClick={() => deleteNotification(notification.id)}
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
-                            title="Удалить"
+                            title='Удалить'
                           >
                             <X size={14} />
                           </motion.button>
@@ -193,8 +197,7 @@ export const Notifications: React.FC = () => {
                   whileHover={{ x: 4 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => {
-                    // Navigate to all notifications
-                    setIsOpen(false)
+                    setIsOpen(false);
                   }}
                 >
                   Все уведомления
@@ -205,5 +208,5 @@ export const Notifications: React.FC = () => {
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 };

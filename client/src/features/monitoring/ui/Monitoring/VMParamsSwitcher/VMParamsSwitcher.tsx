@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { MultiSwitcher } from '@/shared/ui/MultiSwitcher/MultiSwitcher';
 import styles from './VMParamsSwitcher.module.css';
+import { MultiSwitcher } from '@/shared/ui/MultiSwitcher/MultiSwitcher';
 
 type VMParam = 'state' | 'revenue' | 'downtime' | 'fillLevel';
 

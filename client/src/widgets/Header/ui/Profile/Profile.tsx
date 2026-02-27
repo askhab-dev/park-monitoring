@@ -1,11 +1,11 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { LogOut, Settings, User, ChevronRight } from 'lucide-react'
-import styles from './Profile.module.css'
-import profileImage from '../../assets/profile.jpg'
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { LogOut, Settings, User, ChevronRight } from 'lucide-react';
+import styles from './Profile.module.css';
+import profileImage from '../../assets/profile.jpg';
 
 export const Profile: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className={styles.wrapper}>
@@ -14,13 +14,15 @@ export const Profile: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         whileTap={{ scale: 0.98 }}
         animate={{
-          borderColor: isOpen ? 'var(--border-brand)' : 'var(--border-secondary)',
+          borderColor: isOpen
+            ? 'var(--border-brand)'
+            : 'var(--border-secondary)',
         }}
         transition={{ duration: 0.2 }}
       >
         <motion.img
           src={profileImage}
-          alt="User Avatar"
+          alt='User Avatar'
           className={styles.avatar}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -39,7 +41,7 @@ export const Profile: React.FC = () => {
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
             />
-            
+
             {/* Всплывающее меню */}
             <motion.div
               className={styles.popup}
@@ -49,7 +51,11 @@ export const Profile: React.FC = () => {
               transition={{ duration: 0.2, ease: 'easeOut' }}
             >
               <div className={styles.userInfo}>
-                <img src={profileImage} alt="User" className={styles.popupAvatar} />
+                <img
+                  src={profileImage}
+                  alt='User'
+                  className={styles.popupAvatar}
+                />
                 <div className={styles.userDetails}>
                   <span className={styles.userName}>Александр Петров</span>
                   <span className={styles.userEmail}>alex@example.com</span>
@@ -65,7 +71,7 @@ export const Profile: React.FC = () => {
                   whileHover={{ x: 4, backgroundColor: 'rgba(0,0,0,0.02)' }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => {
-                    setIsOpen(false)
+                    setIsOpen(false);
                   }}
                 >
                   <User size={18} />
@@ -78,7 +84,7 @@ export const Profile: React.FC = () => {
                   whileHover={{ x: 4, backgroundColor: 'rgba(0,0,0,0.02)' }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => {
-                    setIsOpen(false)
+                    setIsOpen(false);
                   }}
                 >
                   <Settings size={18} />
@@ -91,7 +97,7 @@ export const Profile: React.FC = () => {
                   whileHover={{ x: 4, backgroundColor: 'rgba(255,0,0,0.02)' }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => {
-                    setIsOpen(false)
+                    setIsOpen(false);
                   }}
                 >
                   <LogOut size={18} />
@@ -104,5 +110,5 @@ export const Profile: React.FC = () => {
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 };

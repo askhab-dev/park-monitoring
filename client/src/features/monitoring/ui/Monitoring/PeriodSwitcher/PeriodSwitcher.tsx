@@ -15,11 +15,5 @@ const periods: { id: Period; label: string }[] = [
 export const PeriodSwitcher = () => {
   const [active, setActive] = useState<Period>('month');
 
-  return (
-    <MultiSwitcher
-      items={periods}
-      value={active}
-      onChange={setActive}
-    />
-  );
+  return <MultiSwitcher items={periods} value={active} onChange={setActive} />;
 };

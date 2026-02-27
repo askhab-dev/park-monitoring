@@ -7,7 +7,6 @@ import styles from './Monitoring.module.css';
 import { StatsReview } from './StatsReview/StatsReview';
 import { Analytics } from './Analytics/Analytics';
 
-
 export const Monitoring = () => {
   return (
     <div className={styles.monitoring}>

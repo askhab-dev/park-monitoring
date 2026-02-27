@@ -3,6 +3,9 @@ interface LoaderProps {
   message?: string;
 }
 
-export const Loader: React.FC<LoaderProps> = ({ className, message = 'Загрузка...' }) => {
+export const Loader: React.FC<LoaderProps> = ({
+  className,
+  message = 'Загрузка...',
+}) => {
   return <div className={className}>{message}</div>;
 };

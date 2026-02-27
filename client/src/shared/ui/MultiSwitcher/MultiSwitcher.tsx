@@ -25,7 +25,9 @@ export const MultiSwitcher = <T extends SwitcherId>({
   className = '',
 }: MultiSwitcherProps<T>) => {
   const isControlled = controlledValue !== undefined;
-  const [internalValue, setInternalValue] = useState<T | undefined>(defaultValue);
+  const [internalValue, setInternalValue] = useState<T | undefined>(
+    defaultValue,
+  );
 
   const activeId = isControlled ? controlledValue : internalValue;
 
@@ -45,7 +47,7 @@ export const MultiSwitcher = <T extends SwitcherId>({
         return (
           <button
             key={String(item.id)}
-            type="button"
+            type='button'
             className={`
               ${styles.item}
               ${isActive ? styles.active : ''}

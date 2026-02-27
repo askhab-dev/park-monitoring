@@ -1,8 +1,8 @@
-import { Header } from "@/widgets/Header"
-import { LeftMenu } from '@/widgets/LeftMenu/LeftMenu'
-import { InnerMenu } from './ui/InnerMenu/InnerMenu'
-
+import { InnerMenu } from './ui/InnerMenu/InnerMenu';
 import styles from './AdminMonitoring.module.css';
+import { Header } from '@/widgets/Header';
+import { LeftMenu } from '@/widgets/LeftMenu/LeftMenu';
+
 import { Monitoring } from '@/features/monitoring';
 
 export const AdminMonitoring: React.FC = () => {
@@ -15,5 +15,5 @@ export const AdminMonitoring: React.FC = () => {
         <Monitoring />
       </main>
     </>
-  )
+  );
 };

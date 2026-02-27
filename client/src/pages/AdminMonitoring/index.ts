@@ -1,1 +1,1 @@
-export { AdminMonitoring } from "./AdminMonitoring";
+export { AdminMonitoring } from './AdminMonitoring';

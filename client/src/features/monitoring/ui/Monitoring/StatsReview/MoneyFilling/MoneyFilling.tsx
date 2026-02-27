@@ -1,8 +1,8 @@
+import styles from './MoneyFilling.module.css';
 import { useApi } from '@/shared/hooks/useApi';
 import ArrowDownIcon from '@/shared/assets/arrow-down-narrow.svg?react';
 import CoinIcon from '@/shared/assets/coin.svg?react';
 import CashIcon from '@/shared/assets/cash.svg?react';
-import styles from './MoneyFilling.module.css';
 import { ReportButton } from '@/shared/ui/ReportButton/ReportButton';
 import { Loader } from '@/shared/ui/Loader/Loader';
 import { ErrorMessage } from '@/shared/ui/Error/Error';
@@ -10,25 +10,27 @@ import { ErrorMessage } from '@/shared/ui/Error/Error';
 const typeColor = (type: string) => {
   switch (type) {
     case 'B':
-      return '#F04438' // red
+      return '#F04438'; // red
     case 'M':
-      return '#F79009' // orange
+      return '#F79009'; // orange
     case 'A':
-      return '#17B26A' // green
+      return '#17B26A'; // green
     default:
-      return '#6b7280' // gray
+      return '#6b7280'; // gray
   }
 };
 
 type MoneyFillResponse = {
-  machineId: number
-  machineType: string
-  coinFillPercentage: number
-  banknotesFillPercentage: number
+  machineId: number;
+  machineType: string;
+  coinFillPercentage: number;
+  banknotesFillPercentage: number;
 }[];
 
 export const MoneyFilling = () => {
-  const { data, error, isLoading } = useApi<MoneyFillResponse>('/machines/money-fill');
+  const { data, error, isLoading } = useApi<MoneyFillResponse>(
+    '/machines/money-fill',
+  );
 
   if (error)
     return (
@@ -66,7 +68,9 @@ export const MoneyFilling = () => {
               >
                 {it.machineType}
               </div>
-              <div className={styles.machineId}><span className={styles.hash}>#</span> {it.machineId}</div>
+              <div className={styles.machineId}>
+                <span className={styles.hash}>#</span> {it.machineId}
+              </div>
             </div>
             <div className={styles.right}>
               <div className={styles.fillWrapper}>
@@ -77,10 +81,12 @@ export const MoneyFilling = () => {
                 <div className={styles.itemLine}>
                   <div
                     className={styles.line}
-                    style={{ width: `${it.coinFillPercentage}%`, backgroundColor: typeColor(it.machineType) }}
+                    style={{
+                      width: `${it.coinFillPercentage}%`,
+                      backgroundColor: typeColor(it.machineType),
+                    }}
                   />
                 </div>
-
               </div>
               <div className={styles.fillWrapper}>
                 <div className={styles.percentage}>
@@ -90,7 +96,10 @@ export const MoneyFilling = () => {
                 <div className={styles.itemLine}>
                   <div
                     className={styles.line}
-                    style={{ width: `${it.banknotesFillPercentage}%`, backgroundColor: typeColor(it.machineType) }}
+                    style={{
+                      width: `${it.banknotesFillPercentage}%`,
+                      backgroundColor: typeColor(it.machineType),
+                    }}
                   />
                 </div>
               </div>

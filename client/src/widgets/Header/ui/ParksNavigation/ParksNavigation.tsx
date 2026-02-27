@@ -1,16 +1,18 @@
-import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
 
-import styles from './ParksNavigation.module.css'
-import type { Park } from '../../config/parks.types'
-import { useParkSelection } from '../../hooks/useParkSelection'
+import styles from './ParksNavigation.module.css';
+import type { Park } from '../../config/parks.types';
+import { useParkSelection } from '../../hooks/useParkSelection';
 
 type Props = {
-  parks: Park[]
-}
+  parks: Park[];
+};
 
 export const ParksNavigation: React.FC<Props> = ({ parks }) => {
-  const { isOpen, selectedPark, toggle, selectPark } = useParkSelection(parks[0])
+  const { isOpen, selectedPark, toggle, selectPark } = useParkSelection(
+    parks[0],
+  );
 
   return (
     <nav className={styles.parksNavigation}>
@@ -19,7 +21,7 @@ export const ParksNavigation: React.FC<Props> = ({ parks }) => {
         initial={false}
         animate={{
           borderColor: isOpen ? 'rgba(0, 0, 0, 0.1)' : 'rgba(0, 0, 0, 0.05)',
-          boxShadow: isOpen ? '0 2px 8px rgba(0,0,0,0.05)' : 'none'
+          boxShadow: isOpen ? '0 2px 8px rgba(0,0,0,0.05)' : 'none',
         }}
       >
         <button
@@ -72,5 +74,5 @@ export const ParksNavigation: React.FC<Props> = ({ parks }) => {
         </AnimatePresence>
       </motion.nav>
     </nav>
-  )
-}
+  );
+};

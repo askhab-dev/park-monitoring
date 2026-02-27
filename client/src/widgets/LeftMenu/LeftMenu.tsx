@@ -10,14 +10,28 @@ import QuestionIcon from './assets/question.svg?react';
 export const LeftMenu = () => {
   return (
     <div className={styles.leftMenu}>
-      <a href='#' className={styles.item}><AdminMonitoringIcon /></a>
-      <a href='#' className={styles.item}><SettingsIcon /></a>
-      <a href='#' className={styles.item}><DatabaseIcon /></a>
-      <a href='#' className={styles.item}><GiftIcon /></a>
-      <a href='#' className={styles.item}><RightsIcon /></a>
+      <a href='#' className={styles.item}>
+        <AdminMonitoringIcon />
+      </a>
+      <a href='#' className={styles.item}>
+        <SettingsIcon />
+      </a>
+      <a href='#' className={styles.item}>
+        <DatabaseIcon />
+      </a>
+      <a href='#' className={styles.item}>
+        <GiftIcon />
+      </a>
+      <a href='#' className={styles.item}>
+        <RightsIcon />
+      </a>
       <div className={styles.spacer}></div>
-      <a href='#' className={styles.item}><QuestionIcon /></a>
-      <a href='#' className={styles.item}><CharIcon /></a>
+      <a href='#' className={styles.item}>
+        <QuestionIcon />
+      </a>
+      <a href='#' className={styles.item}>
+        <CharIcon />
+      </a>
     </div>
   );
 };

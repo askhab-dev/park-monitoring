@@ -8,20 +8,21 @@ import {
   Tooltip,
 } from 'recharts';
 
+import styles from './PeakSales.module.css';
 import { MultiSwitcher } from '@/shared/ui/MultiSwitcher/MultiSwitcher';
 import { useApi } from '@/shared/hooks/useApi';
 import { Loader } from '@/shared/ui/Loader/Loader';
 import { ErrorMessage } from '@/shared/ui/Error/Error';
 
-import styles from './PeakSales.module.css';
-
 type PeakSalesResponse = {
-  day: number,
-  peakSalesTime: string,
-}[]
+  day: number;
+  peakSalesTime: string;
+}[];
 
 export const PeakSales = () => {
-  const { data, error, isLoading } = useApi<PeakSalesResponse>('/sales/peak-sale-count-per-day');
+  const { data, error, isLoading } = useApi<PeakSalesResponse>(
+    '/sales/peak-sale-count-per-day',
+  );
 
   if (error)
     return (
@@ -39,13 +40,13 @@ export const PeakSales = () => {
       </div>
     );
 
-  const chartData = data.map(item => {
-    const [h, m] = item.peakSalesTime.split(':').map(Number)
+  const chartData = data.map((item) => {
+    const [h, m] = item.peakSalesTime.split(':').map(Number);
 
     return {
       day: item.day,
       value: h + m / 60,
-    }
+    };
   });
 
   return (
@@ -63,19 +64,19 @@ export const PeakSales = () => {
       </div>
 
       <div className={styles.chartWrapper}>
-        <ResponsiveContainer width="100%" height={204}>
+        <ResponsiveContainer width='100%' height={204}>
           <AreaChart data={chartData}>
             <defs>
-              <linearGradient id="peakGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#4B5563" stopOpacity={0.25} />
-                <stop offset="100%" stopColor="#4B5563" stopOpacity={0.05} />
+              <linearGradient id='peakGradient' x1='0' y1='0' x2='0' y2='1'>
+                <stop offset='0%' stopColor='#4B5563' stopOpacity={0.25} />
+                <stop offset='100%' stopColor='#4B5563' stopOpacity={0.05} />
               </linearGradient>
             </defs>
 
-            <CartesianGrid stroke="#E5E7EB" vertical horizontal={false} />
+            <CartesianGrid stroke='#E5E7EB' vertical horizontal={false} />
 
             <XAxis
-              dataKey="day"
+              dataKey='day'
               tick={{ fill: '#6B7280', fontSize: 12 }}
               axisLine={false}
               tickLine={false}
@@ -110,25 +111,25 @@ export const PeakSales = () => {
 
             <Tooltip
               formatter={(value) => {
-                const hours = Math.floor(Number(value))
-                const minutes = Math.round((Number(value) - hours) * 60)
+                const hours = Math.floor(Number(value));
+                const minutes = Math.round((Number(value) - hours) * 60);
                 return `${hours.toString().padStart(2, '0')}:${minutes
                   .toString()
-                  .padStart(2, '0')}`
+                  .padStart(2, '0')}`;
               }}
             />
 
             <Area
-              type="monotone"
-              dataKey="value"
-              stroke="#4B5563"
+              type='monotone'
+              dataKey='value'
+              stroke='#4B5563'
               strokeWidth={3}
-              fill="url(#peakGradient)"
+              fill='url(#peakGradient)'
               dot={false}
             />
           </AreaChart>
         </ResponsiveContainer>
       </div>
     </div>
-  )
+  );
 };

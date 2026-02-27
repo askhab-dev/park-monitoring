@@ -1,6 +1,6 @@
 export interface Park {
-  id: number
-  name: string
-  address: string
-  num: string
+  id: number;
+  name: string;
+  address: string;
+  num: string;
 }

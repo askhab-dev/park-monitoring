@@ -1,6 +1,6 @@
 import React from 'react';
-import ArrowIcon from '@/shared/assets/arrowRight.svg?react';
 import styles from './StatItem.module.css';
+import ArrowIcon from '@/shared/assets/arrowRight.svg?react';
 
 type StatStatus = 'good' | 'warning' | 'danger' | null;
 

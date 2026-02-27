@@ -3,6 +3,9 @@ interface ErrorProps {
   message?: string;
 }
 
-export const ErrorMessage: React.FC<ErrorProps> = ({ className, message = 'Ошибка загрузки данных' }) => {
+export const ErrorMessage: React.FC<ErrorProps> = ({
+  className,
+  message = 'Ошибка загрузки данных',
+}) => {
   return <div className={className}>{message}</div>;
 };
