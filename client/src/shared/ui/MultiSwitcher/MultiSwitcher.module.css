@@ -21,7 +21,13 @@
   border: none;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: all 0.13s ease;
+  position: relative;
+  z-index: 1;
+  transition:
+    background-color 0.16s ease-out,
+    color 0.16s ease-out,
+    transform 0.12s ease-out,
+    box-shadow 0.12s ease-out;
   white-space: nowrap;
   font-weight: 600;
   font-size: var(--font-size-lg);
@@ -29,6 +35,7 @@
 }
 
 .item:hover {
+  transform: translateY(-1px);
   background: var(--bg-soft);
   color: var(--gray-600);
 }

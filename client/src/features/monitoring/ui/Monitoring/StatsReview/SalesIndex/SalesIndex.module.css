@@ -32,6 +32,34 @@
   background: #F2F4F7;
 }
 
+.sortButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.16s ease-out,
+    transform 0.12s ease-out;
+}
+
+.sortButton:hover {
+  background: rgba(148, 163, 184, 0.16);
+  transform: translateY(-1px);
+}
+
+.sortIcon {
+  transition: transform 0.16s ease-out;
+}
+
+.sortIconRotated {
+  transform: rotate(180deg) scaleX(-1);
+}
+
 .list {
 	list-style: none;
 	margin: 0;

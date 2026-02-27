@@ -7,6 +7,14 @@
 
   border-radius: var(--radius-lg);
   background: var(--bg-surface);
+  transition:
+    transform 0.15s ease-out,
+    box-shadow 0.15s ease-out;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
+  }
 
   &:has(.good) {
     background: linear-gradient(

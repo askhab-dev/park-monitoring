@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from './SalesIndex.module.css';
 import { useApi } from '@/shared/hooks/useApi';
 import ArrowDownIcon from '@/shared/assets/arrow-down-wide.svg?react';
@@ -12,6 +13,8 @@ interface MachineData {
 }
 
 export const SalesIndex = () => {
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
+
   const { data, error, isLoading } = useApi<MachineData[]>(
     '/sales/index-by-historic-avg',
   );
@@ -36,7 +39,11 @@ export const SalesIndex = () => {
     );
   const items = (data ?? [])
     .slice()
-    .sort((a, b) => a.percentage - b.percentage);
+    .sort((a, b) =>
+      sortOrder === 'asc'
+        ? a.percentage - b.percentage
+        : b.percentage - a.percentage,
+    );
 
   const typeColor = (type: string) => {
     switch (type) {
@@ -59,8 +66,23 @@ export const SalesIndex = () => {
 
       <div className={styles.toolbar}>
         <button className={styles.ghostButton}>Изменить показатель</button>
-        <button>
-          <ArrowDownIcon />
+        <button
+          type='button'
+          className={styles.sortButton}
+          onClick={() =>
+            setSortOrder((prev) => (prev === 'asc' ? 'desc' : 'asc'))
+          }
+          aria-label={
+            sortOrder === 'asc'
+              ? 'Сортировать по убыванию'
+              : 'Сортировать по возрастанию'
+          }
+        >
+          <ArrowDownIcon
+            className={`${styles.sortIcon} ${
+              sortOrder === 'desc' ? styles.sortIconRotated : ''
+            }`}
+          />
         </button>
       </div>
 

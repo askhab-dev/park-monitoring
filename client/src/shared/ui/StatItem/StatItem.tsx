@@ -20,7 +20,7 @@ export const StatItem: React.FC<StatItemProps> = ({
   showArrow,
 }) => {
   return (
-    <div className={styles.statItem}>
+    <a className={styles.statItem} href='#'>
       <div className={styles.label}>
         <span>{label}</span>
         {showArrow && <ArrowIcon className={styles.arrow} />}
@@ -37,6 +37,6 @@ export const StatItem: React.FC<StatItemProps> = ({
 
         {percent && <span className={styles.percent}>{percent}</span>}
       </div>
-    </div>
+    </a>
   );
 };
