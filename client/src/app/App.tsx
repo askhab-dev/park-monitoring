@@ -1,12 +1,5 @@
-import { lazy, Suspense } from 'react';
 import { SWRConfig } from 'swr';
-import { Loader } from '@/shared/ui/Loader/Loader';
-
-const AdminMonitoringPage = lazy(() =>
-  import('../pages/AdminMonitoring').then((m) => ({
-    default: m.AdminMonitoring,
-  })),
-);
+import { AdminMonitoring } from '@/pages/AdminMonitoring';
 
 export const App = () => {
   return (
@@ -18,9 +11,7 @@ export const App = () => {
         dedupingInterval: 10_000,
       }}
     >
-      <Suspense fallback={<Loader />}>
-        <AdminMonitoringPage />
-      </Suspense>
+      <AdminMonitoring />
     </SWRConfig>
   );
 };
